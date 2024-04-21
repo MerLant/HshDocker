@@ -1,0 +1,5 @@
+.env
+.env.back
+.env.db
+.env.front
+/local_piston
