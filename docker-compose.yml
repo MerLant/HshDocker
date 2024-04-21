@@ -10,16 +10,14 @@ services:
       - pgdata:/var/lib/postgresql/data
     networks:
       - net-db
-    restart:
-      unless-stopped
+    restart: unless-stopped
 
-      # https://github.com/MerLant/HshBack.git
   backend:
     env_file:
       - .env.back
       - .env.db
     build:
-      context: /Users/merlant/Developer/HshBack/
+      context: https://github.com/MerLant/HshBack.git
       dockerfile: Dockerfile
     depends_on:
       - db
@@ -31,10 +29,9 @@ services:
     ports:
       - "3000:3000"
 
-    # https://github.com/MerLant/Hsh.git#main
   frontend:
     build:
-      context: /Users/merlant/Developer/Hsh/
+      context: https://github.com/MerLant/Hsh.git
       dockerfile: Dockerfile
     env_file:
       - .env.front
